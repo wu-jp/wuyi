@@ -1,31 +1,49 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+
+// 主路由
+import Login from '../views/login.vue'
+import Index from '../views/index.vue'
+
+// 子路由
+import Home from '../pages/Home.vue'
+import About from '../pages/About.vue'
+import Gmail from '../pages/Gmail.vue'
 
 Vue.use(VueRouter)
 
 const routes = [{
-        path: '/',
+    path: '/',
+    name: 'login',
+    component: Login
+  },
+  {
+    path: '/index',
+    name: 'index',
+    component: Index,
+    children: [{
+        path: 'home',
         name: 'home',
         component: Home
-    },
-    {
-        path: '/about',
+      },
+      {
+        path: 'about',
         name: 'about',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import( /* webpackChunkName: "about" */ '../views/About.vue')
-    },
-    {
-        path: '/gmail',
+        component: About
+      },
+      {
+        path: 'gmail',
         name: 'gmail',
-        component: () => import('../views/Gmail.vue')
-    }
+        component: Gmail
+      }
+    ]
+  }
 ]
 
 const router = new VueRouter({
-    routes
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes
 })
 
 export default router
