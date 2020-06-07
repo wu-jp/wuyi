@@ -24,6 +24,10 @@
 <script>
 export default {
   props: {},
+  beforeRouterEnter(to, from, next) {
+    console.log(to);
+  },
+  beforeRouterLeave(to, from, next) {},
   data() {
     return {
       username: "",
