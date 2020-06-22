@@ -12,12 +12,14 @@
         <input type="password" v-model="password" />
         <span data-placeholder="Password"></span>
       </div>
-      <input class="logbtn" type="submit" value="Login" />
+      <input class="logbtn" type readonly value="Login" @click="login" />
       <div class="bottom-text">
         Don't hava account?
         <a href="#">Sign up</a>
       </div>
     </form>
+
+    <h2 @click="demoE">Demo Entrance</h2>
   </div>
 </template>
 
@@ -38,7 +40,15 @@ export default {
   created() {},
   mounted() {},
   watch: {},
-  methods: {},
+  methods: {
+    login() {
+      // console.log(this.$router);
+      this.$router.push("/index");
+    },
+    demoE() {
+      this.$router.push("/demo");
+    }
+  },
   components: {}
 };
 </script>
@@ -131,6 +141,7 @@ export default {
   outline: none;
   cursor: pointer;
   transition: 0.6s;
+  text-align: center;
 }
 
 .logbtn:hover {
