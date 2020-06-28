@@ -24,6 +24,7 @@
 </template>
 
 <script>
+// import Loading from '../components/my-loading/index.js'
 export default {
   props: {},
   beforeRouterEnter(to, from, next) {
@@ -37,7 +38,15 @@ export default {
     };
   },
   computed: {},
-  created() {},
+  created() {
+    // const loading = Loading({text: '正在加载...'});
+    // 三秒后自动关闭
+    setTimeout(() => {
+      // loading.close()
+      this.$loading().close()
+    }, 3000)
+    this.$loading({text: '正在加载...'})
+  },
   mounted() {},
   watch: {},
   methods: {

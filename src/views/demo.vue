@@ -8,21 +8,34 @@
       <router-link tag="span" :to="{name: 'game'}">游戏</router-link>
     </div>
     <transition :name="transitionName">
+<<<<<<< HEAD
       <router-view class="content"></router-view>
+=======
+      <router-view v-loading="visible"></router-view>
+>>>>>>> 3cdd029dc067c3abfd68df0318b6be7f2a59d6c7
     </transition>
   </div>
 </template>
 
 <script>
+import loading from '../components/my-loading/directive-loading.js'
+
 export default {
   props: {},
   data() {
     return {
-      transitionName: ""
+      transitionName: "",
+      visible: false,
     };
   },
   computed: {},
-  created() {},
+  created() {
+    // 自定义v-loading指令
+    this.visible = true;
+    setTimeout(()=>{
+      this.visible = false;
+    }, 3000)
+  },
   mounted() {},
   watch: {
     $route(to, from) {

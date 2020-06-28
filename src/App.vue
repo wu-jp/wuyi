@@ -11,7 +11,7 @@
 </template>
 <script>
 import renderOne from "./components/renders/render-one";
-import myProvide from "./components/ProvideEndInject/my-provide";
+import myProvide from "./components/provide-end-inject/my-provide";
 
 export default {
   name: "app",
