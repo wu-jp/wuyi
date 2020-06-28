@@ -8,7 +8,7 @@
       <router-link tag="span" :to="{name: 'game'}">游戏</router-link>
     </div>
     <transition :name="transitionName">
-      <router-view></router-view>
+      <router-view class="content"></router-view>
     </transition>
   </div>
 </template>
@@ -82,6 +82,9 @@ export default {
 </script>
 
 <style scopeds>
+#demo {
+  position: relative;
+}
 .nav {
   height: 40px;
   line-height: 40px;
@@ -91,9 +94,13 @@ export default {
   padding: 0 15px;
 }
 
+.content {
+  position: absolute;
+}
+
 .left-enter,
 .left-leave-to {
-  transform: translateX(100%);
+  transform: translateX(-100%);
 }
 .left-enter-active,
 .left-leave-active {
@@ -102,7 +109,7 @@ export default {
 
 .right-enter,
 .right-leave-to {
-  transform: translateX(-100%);
+  transform: translateX(100%);
 }
 .right-enter-active,
 .right-leave-active {
