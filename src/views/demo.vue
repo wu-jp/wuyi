@@ -8,33 +8,29 @@
       <router-link tag="span" :to="{name: 'game'}">游戏</router-link>
     </div>
     <transition :name="transitionName">
-<<<<<<< HEAD
-      <router-view class="content"></router-view>
-=======
-      <router-view v-loading="visible"></router-view>
->>>>>>> 3cdd029dc067c3abfd68df0318b6be7f2a59d6c7
+      <router-view class="content" v-loading="visible"></router-view>
     </transition>
   </div>
 </template>
 
 <script>
-import loading from '../components/my-loading/directive-loading.js'
+import loading from "../components/my-loading/directive-loading.js";
 
 export default {
   props: {},
   data() {
     return {
       transitionName: "",
-      visible: false,
+      visible: false
     };
   },
   computed: {},
   created() {
     // 自定义v-loading指令
     this.visible = true;
-    setTimeout(()=>{
+    setTimeout(() => {
       this.visible = false;
-    }, 3000)
+    }, 3000);
   },
   mounted() {},
   watch: {
@@ -71,12 +67,12 @@ export default {
           break;
       }
 
-      console.log(toIndex, fromIndex);
+      // console.log(toIndex, fromIndex);
 
       if (toIndex > fromIndex) {
-        this.transitionName = "right";
-      } else {
         this.transitionName = "left";
+      } else {
+        this.transitionName = "right";
       }
 
       // this.$emit("success", to.name);
@@ -109,9 +105,13 @@ export default {
 
 .content {
   position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
-.left-enter,
+.left-enter {
+  transform: translateX(100%);
+}
 .left-leave-to {
   transform: translateX(-100%);
 }
@@ -120,7 +120,9 @@ export default {
   transition: transform linear 0.2s;
 }
 
-.right-enter,
+.right-enter {
+  transform: translateX(-100%);
+}
 .right-leave-to {
   transform: translateX(100%);
 }
